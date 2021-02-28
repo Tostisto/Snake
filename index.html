@@ -26,29 +26,50 @@
 
     <script>
 
+        document.addEventListener('keydown', keypush);
+
         const canvas = document.querySelector("canvas");
         const ctx = canvas.getContext("2d");
 
         const snake_size = 50;
         let snake_x = 20;
         let snake_y = canvas.height / 2 - snake_size / 2;
-        
+
 
         function gameLoop()
         {
             ctx.fillStyle = "white";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            snake_x = snake_x + 5;
-
             ctx.fillStyle = "black";
-            ctx.fillRect(snake_x, snake_y, snake_size,snake_size );   
-            
-            
+            ctx.fillRect(snake_x, snake_y, snake_size, snake_size);
+
+
             requestAnimationFrame(gameLoop);
         }
 
         gameLoop();
+
+
+        function keypush(event)
+        {
+            if(event.key == 'ArrowUp')
+            {
+                snake_y -= 10;
+            }
+            else if(event.key == 'ArrowDown')
+            {
+                snake_y += 10;
+            }
+            else if(event.key == 'ArrowLeft')
+            {
+                snake_x -= 10;
+            }
+            else if(event.key == 'ArrowRight')
+            {
+                snake_x += 10;
+            }
+        }
 
     </script>
 </body>
