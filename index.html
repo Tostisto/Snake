@@ -24,16 +24,20 @@
 
     </canvas>
 
+    <h1>0</h1>
+
     <script>
 
         document.addEventListener('keydown', keypush);
 
         const canvas = document.querySelector("canvas");
+        const score = document.querySelector("h1");
         const ctx = canvas.getContext("2d");
 
         const snake_size = 50;
         const snake_speed = 50;
-        let snake_x = 20;
+        let set_score = 0;
+        let snake_x = 50;
         let snake_y = canvas.height / 2;
 
         let velocity_x = 0;
@@ -57,7 +61,7 @@
             ctx.fillStyle = "red";
             ctx.fillRect(food_x, food_y, 50, 50);
 
-            if (snake_x > canvas.width)
+            if (snake_x > canvas.width + snake_size)
             {
                 snake_x = 0;
             }
@@ -77,6 +81,7 @@
             // random food 
             if (snake_x == food_x && snake_y == food_y)
             {
+                score.textContent = ++set_score;
                food_x = Math.floor(Math.random() * block_cout_x) * snake_size;
                food_y = Math.floor(Math.random() * block_cout_y) * snake_size; 
             }
