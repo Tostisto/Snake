@@ -34,10 +34,16 @@
         const snake_size = 50;
         const snake_speed = 50;
         let snake_x = 20;
-        let snake_y = canvas.height / 2 - snake_size / 2;
+        let snake_y = canvas.height / 2;
 
         let velocity_x = 0;
         let velocity_y = 0;
+
+        let food_x = 200;
+        let food_y = 200;
+
+        const block_cout_x = canvas.width / snake_size;
+        const block_cout_y = canvas.height / snake_size;
 
 
         function gameLoop()
@@ -47,6 +53,9 @@
 
             ctx.fillStyle = "black";
             ctx.fillRect(snake_x, snake_y, snake_size, snake_size);
+
+            ctx.fillStyle = "red";
+            ctx.fillRect(food_x, food_y, 50, 50);
 
             if (snake_x > canvas.width)
             {
@@ -63,6 +72,13 @@
             if (snake_y < 0)
             {
                 snake_y = canvas.height;
+            }
+
+            // random food 
+            if (snake_x == food_x && snake_y == food_y)
+            {
+               food_x = Math.floor(Math.random() * block_cout_x) * snake_size;
+               food_y = Math.floor(Math.random() * block_cout_y) * snake_size; 
             }
 
             snake_x += snake_speed * velocity_x
