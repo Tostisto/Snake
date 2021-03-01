@@ -36,6 +36,9 @@
         let snake_x = 20;
         let snake_y = canvas.height / 2 - snake_size / 2;
 
+        let velocity_x = 0;
+        let velocity_y = 0;
+
 
         function gameLoop()
         {
@@ -62,7 +65,10 @@
                 snake_y = canvas.height;
             }
 
-            requestAnimationFrame(gameLoop);
+            snake_x += snake_speed * velocity_x
+            snake_y += snake_speed * velocity_y
+
+            setTimeout(gameLoop, 1000/10);
         }
 
         gameLoop();
@@ -72,19 +78,23 @@
         {
             if(event.key == 'ArrowUp')
             {
-                snake_y -= snake_speed;
+                velocity_x = 0;
+                velocity_y = -1;
             }
             if(event.key == 'ArrowDown')
             {
-                snake_y += snake_speed;
+                velocity_x = 0;
+                velocity_y = 1;
             }
             if(event.key == 'ArrowLeft')
             {
-                snake_x -= snake_speed;
+                velocity_x = -1;
+                velocity_y = 0;
             }
             if(event.key == 'ArrowRight')
             {
-                snake_x += snake_speed;
+                velocity_x = 1;
+                velocity_y = 0;
             }
 
         }
