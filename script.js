@@ -4,7 +4,7 @@ const canvas = document.querySelector("canvas");
 const score = document.querySelector("h1");
 const ctx = canvas.getContext("2d");
 
-const snake_food_size = 50;
+const block_size = 50;
 const snake_speed = 50;
 let set_score = 0;
 let snake_x = 50;
@@ -13,8 +13,8 @@ let snake_y = canvas.height / 2;
 let velocity_x = 0;
 let velocity_y = 0;
 
-const block_cout_x = canvas.width / snake_food_size;
-const block_cout_y = canvas.height / snake_food_size;
+const block_cout_x = canvas.width / block_size;
+const block_cout_y = canvas.height / block_size;
 
 random_fruit();
 
@@ -41,8 +41,8 @@ function move() {
 }
 
 function drawFruit() {
-    ctx.fillStyle = "red";
-    ctx.fillRect(food_x, food_y, snake_food_size, snake_food_size);
+    ctx.fillStyle = "#ebb515";
+    ctx.fillRect(food_x, food_y, block_size - 1, block_size - 1);
 
     if (snake_x == food_x && snake_y == food_y) {
         score.textContent = ++set_score;
@@ -51,18 +51,18 @@ function drawFruit() {
 }
 
 function random_fruit() {
-    food_x = Math.floor(Math.random() * block_cout_x) * snake_food_size;
-    food_y = Math.floor(Math.random() * block_cout_y) * snake_food_size;
+    food_x = Math.floor(Math.random() * block_cout_x) * block_size;
+    food_y = Math.floor(Math.random() * block_cout_y) * block_size;
 }
 
 function colision() {
-    if (snake_x > canvas.width - snake_food_size) {
+    if (snake_x > canvas.width - block_size) {
         snake_x = 0;
     }
     if (snake_x < 0) {
         snake_x = canvas.width;
     }
-    if (snake_y > canvas.height - snake_food_size) {
+    if (snake_y > canvas.height - block_size) {
         snake_y = 0;
     }
     if (snake_y < 0) {
@@ -73,12 +73,19 @@ function colision() {
 
 function drawSnake() {
     ctx.fillStyle = "black";
-    ctx.fillRect(snake_x, snake_y, snake_food_size, snake_food_size);
+    ctx.fillRect(snake_x, snake_y, block_size, block_size);
 }
 
 function drawBackground() {
-    ctx.fillStyle = "white";
+    ctx.fillStyle = "lightgray";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    for (let i = 0; i < block_cout_x; i++) {
+        for (let j = 0; j < block_cout_y; j++) {
+            ctx.fillStyle = "white";
+            ctx.fillRect(block_size * i, block_size * j, block_size - 1, block_size - 1);
+        }
+    }
 }
 
 function keypush(event) {
