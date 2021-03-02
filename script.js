@@ -32,7 +32,7 @@ function gameLoop() {
 
     move();
 
-    setTimeout(gameLoop, 1000 / 10);
+    setTimeout(gameLoop, 90);
 }
 
 function move() {
@@ -56,13 +56,13 @@ function random_fruit() {
 }
 
 function colision() {
-    if (snake_x > canvas.width + snake_food_size) {
+    if (snake_x > canvas.width - snake_food_size) {
         snake_x = 0;
     }
     if (snake_x < 0) {
         snake_x = canvas.width;
     }
-    if (snake_y > canvas.height) {
+    if (snake_y > canvas.height - snake_food_size) {
         snake_y = 0;
     }
     if (snake_y < 0) {
