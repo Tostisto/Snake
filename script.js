@@ -44,7 +44,11 @@ function drawFruit() {
     ctx.fillStyle = "#ebb515";
     ctx.fillRect(food_x, food_y, block_size - 1, block_size - 1);
 
-    if (snake_x == food_x && snake_y == food_y) {
+    if (snake_x < food_x + block_size && 
+        snake_x + block_size > food_x &&
+        snake_y < food_y + block_size && 
+        snake_y + block_size > food_y) 
+    {
         score.textContent = ++set_score;
         random_fruit();
     }
