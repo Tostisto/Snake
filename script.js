@@ -24,11 +24,11 @@ function gameLoop() {
 
     drawBackground();
 
+    drawFruit();
+
     drawSnake();
 
     colision();
-
-    drawFruit();
 
     move();
 
