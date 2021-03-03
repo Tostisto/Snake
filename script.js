@@ -36,8 +36,6 @@ function gameLoop() {
     move();
 
     setTimeout(gameLoop, 90);
-
-
 }
 
 function move() {
@@ -79,7 +77,6 @@ function colision() {
     }
 }
 
-
 function drawSnake() {
     for (let i = 0; i < tail_y.length; i++) {
         ctx.fillStyle = "green";
@@ -109,20 +106,28 @@ function drawBackground() {
 
 function keypush(event) {
     if (event.key == 'ArrowUp') {
-        velocity_x = 0;
-        velocity_y = -1;
+        if (velocity_y != 1) {
+            velocity_x = 0;
+            velocity_y = -1;
+        }
     }
     if (event.key == 'ArrowDown') {
-        velocity_x = 0;
-        velocity_y = 1;
+        if (velocity_y != -1) {
+            velocity_x = 0;
+            velocity_y = 1;
+        }
     }
     if (event.key == 'ArrowLeft') {
-        velocity_x = -1;
-        velocity_y = 0;
+        if (velocity_x != 1) {
+            velocity_x = -1;
+            velocity_y = 0;
+        }
     }
     if (event.key == 'ArrowRight') {
-        velocity_x = 1;
-        velocity_y = 0;
+        if (velocity_x != -1) {
+            velocity_x = 1;
+            velocity_y = 0;
+        }
     }
 
 }
