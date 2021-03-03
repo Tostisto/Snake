@@ -24,11 +24,11 @@ function gameLoop() {
 
     drawBackground();
 
+    colision();
+
     drawFruit();
 
     drawSnake();
-
-    colision();
 
     move();
 
@@ -44,6 +44,7 @@ function drawFruit() {
     ctx.fillStyle = "#ebb515";
     ctx.fillRect(food_x, food_y, block_size - 1, block_size - 1);
 
+    // Food colision
     if (snake_x < food_x + block_size && 
         snake_x + block_size > food_x &&
         snake_y < food_y + block_size && 
