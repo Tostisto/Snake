@@ -75,6 +75,16 @@ function colision() {
     if (snake_y < 0) {
         snake_y = canvas.height;
     }
+    for (let i = 0; i < tail_y.length; i++) {
+        if (snake_x < tail_x[i] + block_size &&
+            snake_x + block_size > tail_x[i] &&
+            snake_y < tail_y[i] + block_size &&
+            snake_y + block_size > tail_y[i]  && set_score > 3){
+            alert("You Die");
+            set_score = 1;
+        }
+    }
+
 }
 
 function drawSnake() {
