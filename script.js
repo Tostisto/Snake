@@ -6,9 +6,12 @@ const ctx = canvas.getContext("2d");
 
 const block_size = 50;
 const snake_speed = 50;
-let set_score = 0;
+let set_score = 1;
 let snake_x = 50;
 let snake_y = canvas.height / 2;
+
+let tail_x = [];
+let tail_y = [];
 
 let velocity_x = 0;
 let velocity_y = 0;
@@ -33,6 +36,8 @@ function gameLoop() {
     move();
 
     setTimeout(gameLoop, 90);
+
+
 }
 
 function move() {
@@ -45,11 +50,10 @@ function drawFruit() {
     ctx.fillRect(food_x, food_y, block_size - 1, block_size - 1);
 
     // Food colision
-    if (snake_x < food_x + block_size && 
+    if (snake_x < food_x + block_size &&
         snake_x + block_size > food_x &&
-        snake_y < food_y + block_size && 
-        snake_y + block_size > food_y) 
-    {
+        snake_y < food_y + block_size &&
+        snake_y + block_size > food_y) {
         score.textContent = ++set_score;
         random_fruit();
     }
@@ -77,6 +81,15 @@ function colision() {
 
 
 function drawSnake() {
+    for (let i = 0; i < tail_y.length; i++) {
+        ctx.fillStyle = "green";
+        ctx.fillRect(tail_x[i], tail_y[i], block_size, block_size);
+    }
+    tail_x.push(snake_x);
+    tail_y.push(snake_y);
+
+    tail_x = tail_x.slice(-1 * set_score);
+    tail_y = tail_y.slice(-1 * set_score);
     ctx.fillStyle = "black";
     ctx.fillRect(snake_x, snake_y, block_size, block_size);
 }
@@ -92,6 +105,7 @@ function drawBackground() {
         }
     }
 }
+
 
 function keypush(event) {
     if (event.key == 'ArrowUp') {
