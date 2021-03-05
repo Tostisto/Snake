@@ -19,6 +19,8 @@ let velocity_y = 0;
 const block_cout_x = canvas.width / block_size;
 const block_cout_y = canvas.height / block_size;
 
+var audio = new Audio('Sound/eat.mp3');
+
 random_fruit();
 
 gameLoop();
@@ -53,6 +55,7 @@ function drawFruit() {
         snake_y < food_y + block_size &&
         snake_y + block_size > food_y) {
         score.textContent = ++set_score;
+        audio.play();
         random_fruit();
     }
 }
@@ -79,7 +82,7 @@ function colision() {
         if (snake_x < tail_x[i] + block_size &&
             snake_x + block_size > tail_x[i] &&
             snake_y < tail_y[i] + block_size &&
-            snake_y + block_size > tail_y[i]  && set_score > 3){
+            snake_y + block_size > tail_y[i] && set_score > 3) {
             alert("You Die");
             set_score = 1;
         }
