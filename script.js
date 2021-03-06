@@ -116,31 +116,50 @@ function drawBackground() {
     }
 }
 
+function moveup()
+{
+    if (velocity_y != 1) {
+        velocity_x = 0;
+        velocity_y = -1;
+    }
+}
+
+function movedown()
+{
+    if (velocity_y != -1) {
+        velocity_x = 0;
+        velocity_y = 1;
+    }
+}
+
+function moveright()
+{
+    if (velocity_x != -1) {
+        velocity_x = 1;
+        velocity_y = 0;
+    }
+}
+
+function moveleft()
+{
+    if (velocity_x != 1) {
+        velocity_x = -1;
+        velocity_y = 0;
+    }
+}
 
 function keypush(event) {
     if (event.key == 'ArrowUp') {
-        if (velocity_y != 1) {
-            velocity_x = 0;
-            velocity_y = -1;
-        }
+        moveup();
     }
     if (event.key == 'ArrowDown') {
-        if (velocity_y != -1) {
-            velocity_x = 0;
-            velocity_y = 1;
-        }
+        movedown();
     }
     if (event.key == 'ArrowLeft') {
-        if (velocity_x != 1) {
-            velocity_x = -1;
-            velocity_y = 0;
-        }
+        moveleft();
     }
     if (event.key == 'ArrowRight') {
-        if (velocity_x != -1) {
-            velocity_x = 1;
-            velocity_y = 0;
-        }
+        moveright();
     }
 
 }
