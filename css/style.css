@@ -6,3 +6,12 @@ body {
 canvas {
     border: brown 10px solid;
 }
+
+button{
+    background-color: aqua;
+    padding:  1.5em;
+    width: 10em;
+    font-size: 17px;
+    border: 5px solid brown;
+    border-radius: 8px;
+}
