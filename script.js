@@ -40,12 +40,40 @@ function gameLoop() {
     setTimeout(gameLoop, 90);
 }
 
-function move() {
-    snake_x += snake_speed * velocity_x;
-    snake_y += snake_speed * velocity_y;
+function drawSnake() {
+    for (let i = 0; i < tail_y.length; i++) {
+        ctx.fillStyle = "green";
+        ctx.fillRect(tail_x[i], tail_y[i], block_size, block_size);
+    }
+    tail_x.push(snake_x);
+    tail_y.push(snake_y);
+
+    tail_x = tail_x.slice(-1 * set_score);
+    tail_y = tail_y.slice(-1 * set_score);
+    ctx.fillStyle = "black";
+    ctx.fillRect(snake_x, snake_y, block_size, block_size);
+}
+
+function drawBackground() {
+    ctx.fillStyle = "lightgray";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    for (let i = 0; i < block_cout_x; i++) {
+        for (let j = 0; j < block_cout_y; j++) {
+            ctx.fillStyle = "white";
+            ctx.fillRect(block_size * i, block_size * j, block_size - 1, block_size - 1);
+        }
+    }
 }
 
 function drawFruit() {
+
+    for (let i = 0; i < tail_x.length; i++) {
+        if (food_x == tail_x[i] && food_y == tail_y[i]) {
+            random_fruit();
+        }
+    }
+
     ctx.fillStyle = "#ebb515";
     ctx.fillRect(food_x, food_y, block_size - 1, block_size - 1);
 
@@ -90,58 +118,33 @@ function colision() {
 
 }
 
-function drawSnake() {
-    for (let i = 0; i < tail_y.length; i++) {
-        ctx.fillStyle = "green";
-        ctx.fillRect(tail_x[i], tail_y[i], block_size, block_size);
-    }
-    tail_x.push(snake_x);
-    tail_y.push(snake_y);
-
-    tail_x = tail_x.slice(-1 * set_score);
-    tail_y = tail_y.slice(-1 * set_score);
-    ctx.fillStyle = "black";
-    ctx.fillRect(snake_x, snake_y, block_size, block_size);
+function move() {
+    snake_x += snake_speed * velocity_x;
+    snake_y += snake_speed * velocity_y;
 }
 
-function drawBackground() {
-    ctx.fillStyle = "lightgray";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    for (let i = 0; i < block_cout_x; i++) {
-        for (let j = 0; j < block_cout_y; j++) {
-            ctx.fillStyle = "white";
-            ctx.fillRect(block_size * i, block_size * j, block_size - 1, block_size - 1);
-        }
-    }
-}
-
-function moveup()
-{
+function moveup() {
     if (velocity_y != 1) {
         velocity_x = 0;
         velocity_y = -1;
     }
 }
 
-function movedown()
-{
+function movedown() {
     if (velocity_y != -1) {
         velocity_x = 0;
         velocity_y = 1;
     }
 }
 
-function moveright()
-{
+function moveright() {
     if (velocity_x != -1) {
         velocity_x = 1;
         velocity_y = 0;
     }
 }
 
-function moveleft()
-{
+function moveleft() {
     if (velocity_x != 1) {
         velocity_x = -1;
         velocity_y = 0;
