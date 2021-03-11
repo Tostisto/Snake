@@ -166,16 +166,16 @@ function moveleft() {
 }
 
 function keypush(event) {
-    if (event.key == 'ArrowUp') {
+    if (event.key == 'ArrowUp' || event.key == 'w') {
         moveup();
     }
-    if (event.key == 'ArrowDown') {
+    if (event.key == 'ArrowDown' || event.key == 's') {
         movedown();
     }
-    if (event.key == 'ArrowLeft') {
+    if (event.key == 'ArrowLeft' || event.key == 'a') {
         moveleft();
     }
-    if (event.key == 'ArrowRight') {
+    if (event.key == 'ArrowRight' || event.key == 'd') {
         moveright();
     }
 
