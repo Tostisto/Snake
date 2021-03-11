@@ -1,15 +1,17 @@
 document.addEventListener('keydown', keypush);
 
 const canvas = document.querySelector("canvas");
-const score = document.querySelector("h1");
 const ctx = canvas.getContext("2d");
+const score = document.querySelector("h1");
 
 const block_size = 50;
 const snake_speed = 50;
-let set_score = 1;
-let snake_x = 50;
-let snake_y = canvas.height / 2;
 
+let set_score = 0;
+
+let snake_length = 4;
+let snake_x = 0;
+let snake_y = 0;
 let tail_x = [];
 let tail_y = [];
 
@@ -40,28 +42,30 @@ function gameLoop() {
     setTimeout(gameLoop, 90);
 }
 
+function draw_rectangle(x, y, width, height, color) {
+    ctx.fillStyle = color;
+    ctx.fillRect(x, y, width, height);
+}
+
 function drawSnake() {
     for (let i = 0; i < tail_y.length; i++) {
-        ctx.fillStyle = "green";
-        ctx.fillRect(tail_x[i], tail_y[i], block_size, block_size);
+        draw_rectangle(tail_x[i], tail_y[i], block_size, block_size, "green");
     }
+
     tail_x.push(snake_x);
     tail_y.push(snake_y);
 
-    tail_x = tail_x.slice(-1 * set_score);
-    tail_y = tail_y.slice(-1 * set_score);
-    ctx.fillStyle = "black";
-    ctx.fillRect(snake_x, snake_y, block_size, block_size);
+    tail_x = tail_x.slice(-1 * snake_length);
+    tail_y = tail_y.slice(-1 * snake_length);
+    draw_rectangle(snake_x, snake_y, block_size, block_size, "black");
 }
 
 function drawBackground() {
-    ctx.fillStyle = "lightgray";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    draw_rectangle(0, 0, canvas.width, canvas.height, "lightgray")
 
     for (let i = 0; i < block_cout_x; i++) {
         for (let j = 0; j < block_cout_y; j++) {
-            ctx.fillStyle = "white";
-            ctx.fillRect(block_size * i, block_size * j, block_size - 1, block_size - 1);
+            draw_rectangle(block_size * i, block_size * j, block_size - 1, block_size - 1, "white")
         }
     }
 }
@@ -74,8 +78,7 @@ function drawFruit() {
         }
     }
 
-    ctx.fillStyle = "#ebb515";
-    ctx.fillRect(food_x, food_y, block_size - 1, block_size - 1);
+    draw_rectangle(food_x, food_y, block_size - 1, block_size - 1, "#ebb515")
 
     // Food colision
     if (snake_x < food_x + block_size &&
@@ -83,6 +86,7 @@ function drawFruit() {
         snake_y < food_y + block_size &&
         snake_y + block_size > food_y) {
         score.textContent = ++set_score;
+        snake_length++;
         audio.play();
         random_fruit();
     }
@@ -110,12 +114,22 @@ function colision() {
         if (snake_x < tail_x[i] + block_size &&
             snake_x + block_size > tail_x[i] &&
             snake_y < tail_y[i] + block_size &&
-            snake_y + block_size > tail_y[i] && set_score > 3) {
-            alert("You Die");
-            set_score = 1;
+            snake_y + block_size > tail_y[i] &&
+            set_score > 0) {
+            gameover();
         }
     }
+}
 
+function gameover() {
+    //Background
+    draw_rectangle(0, 0, canvas.width, canvas.height, "#ebb515")
+    //text
+    ctx.fillStyle = "black";
+    ctx.font = "100px Arial";
+    ctx.textAlign = "center";
+    ctx.fillText("Game Over", canvas.width / 2, canvas.height / 2);
+    snake_speed = 0;
 }
 
 function move() {
@@ -152,16 +166,16 @@ function moveleft() {
 }
 
 function keypush(event) {
-    if (event.key == 'ArrowUp') {
+    if (event.key == 'ArrowUp' || event.key == 'w') {
         moveup();
     }
-    if (event.key == 'ArrowDown') {
+    if (event.key == 'ArrowDown' || event.key == 's') {
         movedown();
     }
-    if (event.key == 'ArrowLeft') {
+    if (event.key == 'ArrowLeft' || event.key == 'a') {
         moveleft();
     }
-    if (event.key == 'ArrowRight') {
+    if (event.key == 'ArrowRight' || event.key == 'd') {
         moveright();
     }
 
