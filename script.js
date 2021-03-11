@@ -6,9 +6,10 @@ const ctx = canvas.getContext("2d");
 
 const block_size = 50;
 const snake_speed = 50;
-let set_score = 1;
-let snake_x = 50;
-let snake_y = canvas.height / 2;
+let set_score = 0;
+let snake_length = 4;
+let snake_x = 0;
+let snake_y = 0;
 
 let tail_x = [];
 let tail_y = [];
@@ -48,8 +49,8 @@ function drawSnake() {
     tail_x.push(snake_x);
     tail_y.push(snake_y);
 
-    tail_x = tail_x.slice(-1 * set_score);
-    tail_y = tail_y.slice(-1 * set_score);
+    tail_x = tail_x.slice(-1 * snake_length);
+    tail_y = tail_y.slice(-1 * snake_length);
     ctx.fillStyle = "black";
     ctx.fillRect(snake_x, snake_y, block_size, block_size);
 }
@@ -83,6 +84,7 @@ function drawFruit() {
         snake_y < food_y + block_size &&
         snake_y + block_size > food_y) {
         score.textContent = ++set_score;
+        snake_length++;
         audio.play();
         random_fruit();
     }
@@ -110,12 +112,23 @@ function colision() {
         if (snake_x < tail_x[i] + block_size &&
             snake_x + block_size > tail_x[i] &&
             snake_y < tail_y[i] + block_size &&
-            snake_y + block_size > tail_y[i] && set_score > 3) {
-            alert("You Die");
-            set_score = 1;
+            snake_y + block_size > tail_y[i] &&
+            set_score > 0) {
+            gameover();
         }
     }
+}
 
+function gameover() {
+    //Background
+    ctx.fillStyle = "#ebb515";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    //text
+    ctx.fillStyle = "black";
+    ctx.font = "100px Arial";
+    ctx.textAlign = "center";
+    ctx.fillText("Game Over", canvas.width / 2, canvas.height / 2);
+    snake_speed = 0;
 }
 
 function move() {
