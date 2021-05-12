@@ -2,7 +2,13 @@ document.addEventListener('keydown', keypush);
 
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
-const score = document.querySelector("h1");
+const score = document.querySelector("#showScore");
+const topScore = document.querySelector("#topScore")
+
+let scoreLS = localStorage.getItem("score")
+
+score.textContent = "Score"
+topScore.textContent = "Your top score: " + scoreLS
 
 const block_size = 50;
 const snake_speed = 50;
@@ -85,7 +91,12 @@ function drawFruit() {
         snake_x + block_size > food_x &&
         snake_y < food_y + block_size &&
         snake_y + block_size > food_y) {
-        score.textContent = ++set_score;
+        score.textContent = "Score: " + ++set_score;
+
+        if (set_score > scoreLS) {
+            localStorage.setItem("score", set_score)
+        }
+
         snake_length++;
         audio.play();
         random_fruit();
