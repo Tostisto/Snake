@@ -7,8 +7,14 @@ const topScore = document.querySelector("#topScore")
 
 let scoreLS = localStorage.getItem("score")
 
-score.textContent = "Score"
-topScore.textContent = "Your top score: " + scoreLS
+score.textContent = "Score: 0"
+if(scoreLS === null)
+{
+    topScore.textContent = "Your top score: 0"
+}
+else{
+    topScore.textContent = "Your top score: " + scoreLS
+}
 
 const block_size = 50;
 const snake_speed = 50;
