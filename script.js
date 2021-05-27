@@ -1,18 +1,20 @@
 document.addEventListener('keydown', keypush);
 
+const body = document.querySelector("body")
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 const score = document.querySelector("#showScore");
 const topScore = document.querySelector("#topScore")
+const gameoverHTML = document.querySelector("#gameover")
 
 let scoreLS = localStorage.getItem("score")
 
 score.textContent = "Score: 0"
-if(scoreLS === null)
-{
+
+if (scoreLS === null) {
     topScore.textContent = "Your top score: 0"
 }
-else{
+else {
     topScore.textContent = "Your top score: " + scoreLS
 }
 
@@ -133,21 +135,13 @@ function colision() {
             snake_y < tail_y[i] + block_size &&
             snake_y + block_size > tail_y[i] &&
             set_score > 0) {
-            gameover();
+            gameoverHTML.style.display = "block";
+            body.style.background = "#eba834"
+            canvas.remove();
         }
     }
 }
 
-function gameover() {
-    //Background
-    draw_rectangle(0, 0, canvas.width, canvas.height, "#ebb515")
-    //text
-    ctx.fillStyle = "black";
-    ctx.font = "100px Arial";
-    ctx.textAlign = "center";
-    ctx.fillText("Game Over", canvas.width / 2, canvas.height / 2);
-    snake_speed = 0;
-}
 
 function move() {
     snake_x += snake_speed * velocity_x;
