@@ -18,3 +18,16 @@ canvas {
   color: rgb(255, 60, 0);
   font-size: 80px;
 }
+
+button {
+  background-color: rgb(0, 140, 255);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 25px;
+}
+button:hover {
+  background-color: rgb(0, 110, 255);
+  color: white;
+  cursor: pointer;
+}
