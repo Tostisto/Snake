@@ -1,27 +1,25 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Snake</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
 
-<head>
-  <meta charset="utf-8">
-  <title>Snake</title>
-  <link rel="stylesheet" href="css/style.css">
-</head>
+  <body>
+    <canvas width=" 700" height="700"> </canvas>
 
-<body>
-  <canvas width=" 700" height="700">
+    <div id="gameover">
+      <h1>Game Over</h1>
+      <button>Restart</button>
+    </div>
 
-  </canvas>
+    <h1 id="showScore"></h1>
+    <h1 id="topScore"></h1>
 
-  <div id="gameover">
-    <h1>Game Over</h1>
-    <button>Restart</button>
-  </div>
-
-  <h1 id="showScore"></h1>
-  <h1 id="topScore"></h1>
-
-  <script src="script.js"></script>
-
-</body>
-
+    <script src="draw.js"></script>
+    <script src="colision.js"></script>
+    <script src="control.js"></script>
+    <script src="main.js"></script>
+  </body>
 </html>
