@@ -7,6 +7,8 @@ const score = document.querySelector("#showScore");
 const topScore = document.querySelector("#topScore")
 const gameoverHTML = document.querySelector("#gameover")
 
+const restartButton = document.querySelector("button")
+
 let scoreLS = localStorage.getItem("score")
 
 score.textContent = "Score: 0"
@@ -54,6 +56,15 @@ function gameLoop() {
     move();
 
     setTimeout(gameLoop, 90);
+}
+
+restartButton.onclick = function restart(){
+    snake_length = 4;
+    set_score = 0;
+    score.textContent = "Score: 0"
+    body.style.backgroundColor = "white"
+    gameoverHTML.style.display = "none"
+    canvas.style.display = "inline"
 }
 
 function draw_rectangle(x, y, width, height, color) {
@@ -136,8 +147,11 @@ function colision() {
             snake_y + block_size > tail_y[i] &&
             set_score > 0) {
             gameoverHTML.style.display = "block";
-            body.style.background = "#eba834"
-            canvas.remove();
+            canvas.style.display = "none";
+            body.style.background = "#eba834";
+            snake_x = 0;
+            snake_y = 0;
+            tail_x, tail_y = [];
         }
     }
 }
