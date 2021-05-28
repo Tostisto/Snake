@@ -1,10 +1,3 @@
-canvas.addEventListener("touchstart", startTouch, false);
-canvas.addEventListener("touchmove", moveTouch, false);
-
-var init_x = null;
-var init_y = null;
-
-
 function keypush(event) {
     if (event.key == 'ArrowUp' || event.key == 'w') {
         moveup();
@@ -19,6 +12,12 @@ function keypush(event) {
         moveright();
     }
 }
+
+canvas.addEventListener("touchstart", startTouch, false);
+canvas.addEventListener("touchmove", moveTouch, false);
+
+var init_x = null;
+var init_y = null;
 
 function startTouch(event) {
     init_x = event.touches[0].clientX;

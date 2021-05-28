@@ -11,6 +11,9 @@ const restartButton = document.querySelector("button")
 
 let scoreLS = localStorage.getItem("score")
 
+canvas.addEventListener("touchstart", startTouch, false);
+canvas.addEventListener("touchmove", moveTouch, false);
+
 score.textContent = "Score: 0"
 
 if (scoreLS === null) {
