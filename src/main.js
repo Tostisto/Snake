@@ -1,7 +1,6 @@
 document.addEventListener('keydown', keypush);
 
 const body = document.querySelector("body")
-const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 const score = document.querySelector("#showScore");
 const topScore = document.querySelector("#topScore")
@@ -40,7 +39,7 @@ let velocity_y = 0;
 const block_cout_x = canvas.width / block_size;
 const block_cout_y = canvas.height / block_size;
 
-var audio = new Audio('Sound/eat.mp3');
+var audio = new Audio('../Sound/eat.mp3');
 
 random_fruit();
 

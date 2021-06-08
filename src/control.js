@@ -1,17 +1,4 @@
-function keypush(event) {
-    if (event.key == 'ArrowUp' || event.key == 'w') {
-        moveup();
-    }
-    if (event.key == 'ArrowDown' || event.key == 's') {
-        movedown();
-    }
-    if (event.key == 'ArrowLeft' || event.key == 'a') {
-        moveleft();
-    }
-    if (event.key == 'ArrowRight' || event.key == 'd') {
-        moveright();
-    }
-}
+const canvas = document.querySelector("canvas");
 
 canvas.addEventListener("touchstart", startTouch, false);
 canvas.addEventListener("touchmove", moveTouch, false);
@@ -61,6 +48,21 @@ function moveTouch(event) {
 
     event.preventDefault();
 };
+
+function keypush(event) {
+    if (event.key == 'ArrowUp' || event.key == 'w') {
+        moveup();
+    }
+    if (event.key == 'ArrowDown' || event.key == 's') {
+        movedown();
+    }
+    if (event.key == 'ArrowLeft' || event.key == 'a') {
+        moveleft();
+    }
+    if (event.key == 'ArrowRight' || event.key == 'd') {
+        moveright();
+    }
+}
 
 function move() {
     snake_x += snake_speed * velocity_x;
