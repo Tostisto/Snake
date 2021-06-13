@@ -1,3 +1,5 @@
+var audio = new Audio('../src/Sound/eat.mp3');
+
 function random_fruit() {
     food_x = Math.floor(Math.random() * block_cout_x) * block_size;
     food_y = Math.floor(Math.random() * block_cout_y) * block_size;

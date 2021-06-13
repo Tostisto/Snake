@@ -15,8 +15,6 @@ const createWindow = () => {
   mainWindow.maximize();
   mainWindow.show();
 
-
-
   mainWindow.setMenuBarVisibility(false);
 
   // and load the index.html of the app.
