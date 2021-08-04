@@ -2,17 +2,6 @@
 # yarn lockfile v1
 
 
-"@electron-forge/async-ora@6.0.0-beta.57":
-  version "6.0.0-beta.57"
-  resolved "https://registry.yarnpkg.com/@electron-forge/async-ora/-/async-ora-6.0.0-beta.57.tgz#14da07e663ff62b47fef6ae489d4a679790715c2"
-  integrity sha512-pinf6bB5etIKNwFgMx2V+kwsFlkjU4mApALv0Jn/lmcH5dlAB4zPwuKTccC44xVO4pp/bV1HWb1XJ4lHVxYaJg==
-  dependencies:
-    colors "^1.4.0"
-    debug "^4.3.1"
-    log-symbols "^4.0.0"
-    ora "^5.0.0"
-    pretty-ms "^7.0.0"
-
 "@electron-forge/async-ora@6.0.0-beta.59":
   version "6.0.0-beta.59"
   resolved "https://registry.yarnpkg.com/@electron-forge/async-ora/-/async-ora-6.0.0-beta.59.tgz#66fa8eef7f80bd662abe4657ac1fef69fdd8a98f"
@@ -146,15 +135,6 @@
     "@malept/cross-spawn-promise" "^2.0.0"
     fs-extra "^10.0.0"
 
-"@electron-forge/maker-base@6.0.0-beta.57":
-  version "6.0.0-beta.57"
-  resolved "https://registry.yarnpkg.com/@electron-forge/maker-base/-/maker-base-6.0.0-beta.57.tgz#b30d7734360a96115667f59abab3d76f77cf6d87"
-  integrity sha512-VnoSCeyCHBv9q0Bz9JRgKC1b4k3z/Qb2T9DrpMqEVW6ClZVkOAZVmjyEtb+Xn8DnRPc4UtSjpAquycC/AZJ4MQ==
-  dependencies:
-    "@electron-forge/shared-types" "6.0.0-beta.57"
-    fs-extra "^10.0.0"
-    which "^2.0.2"
-
 "@electron-forge/maker-base@6.0.0-beta.59":
   version "6.0.0-beta.59"
   resolved "https://registry.yarnpkg.com/@electron-forge/maker-base/-/maker-base-6.0.0-beta.59.tgz#5a26e40edb0d619254c61fd504eb055cf86c5c87"
@@ -218,16 +198,6 @@
   integrity sha512-W+fKf8ehtHU6GQLZnpnyy1XS+9o2dw8PJcRBU+pQNEUcbFqBxcAJhLkfh6cGE2tQQ/rN+N77RMWEnLh9GjZMCQ==
   dependencies:
     "@electron-forge/shared-types" "6.0.0-beta.59"
-
-"@electron-forge/shared-types@6.0.0-beta.57":
-  version "6.0.0-beta.57"
-  resolved "https://registry.yarnpkg.com/@electron-forge/shared-types/-/shared-types-6.0.0-beta.57.tgz#0c7f23eb150abed991c1e606dcd5fa9f07f3caf5"
-  integrity sha512-8jRAf7HsfQC5BA8MTOwh8cXmqJ8JJqzO7WzDW9A50tHOKbpBxPW9YM8036SZzZ4GNZYBSWmJt3d3vW+KFLeYXg==
-  dependencies:
-    "@electron-forge/async-ora" "6.0.0-beta.57"
-    electron-packager "^15.0.0"
-    electron-rebuild "^2.3.2"
-    ora "^5.0.0"
 
 "@electron-forge/shared-types@6.0.0-beta.59":
   version "6.0.0-beta.59"
@@ -1125,10 +1095,10 @@ electron-winstaller@^5.0.0:
     lodash.template "^4.2.2"
     temp "^0.9.0"
 
-electron@13.1.7:
-  version "13.1.7"
-  resolved "https://registry.yarnpkg.com/electron/-/electron-13.1.7.tgz#7e17f5c93a8d182a2a486884fed3dc34ab101be9"
-  integrity sha512-sVfpP/0s6a82FK32LMuEe9L+aWZw15u3uYn9xUJArPjy4OZHteE6yM5871YCNXNiDnoCLQ5eqQWipiVgHsf8nQ==
+electron@13.1.8:
+  version "13.1.8"
+  resolved "https://registry.yarnpkg.com/electron/-/electron-13.1.8.tgz#a6def6eca7cafc7b068a8f71a069e521ba803182"
+  integrity sha512-ei2ZyyG81zUOlvm5Zxri668TdH5GNLY0wF+XrC2FRCqa8AABAPjJIWTRkhFEr/H6PDVPNZjMPvSs3XhHyVVk2g==
   dependencies:
     "@electron/get" "^1.0.1"
     "@types/node" "^14.6.2"
